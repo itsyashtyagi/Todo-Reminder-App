@@ -3,8 +3,6 @@
 
 ---
 
-## 📖 Folder Descriptions
-
 - **main.dart** → App entry point, initializes Providers, sets up routes & theme.  
 - **core/** → Contains global utilities.  
   - `constants/` → App-wide constants (colors, strings, API endpoints).  
@@ -25,6 +23,3 @@
 
 ---
 
-✅ With this, anyone reading your README will **understand both the folder tree and the purpose of each part**.  
-
-Do you also want me to add a **1-week roadmap section** (day-by-day development tasks) into the same README snippet?
