@@ -1,16 +1,23 @@
-# todoapp
+## 📂 Project Structure
 
-A new Flutter project.
+---
 
-## Getting Started
+- **main.dart** → App entry point, initializes Providers, sets up routes & theme.
+- **core/** → Contains global utilities.
+  - `constants/` → App-wide constants (colors, strings, API endpoints).
+  - `theme/` → Centralized theme configuration (light/dark modes).
+  - `utils/` → Helper functions (date formatting, notification scheduling, etc.).
+- **data/** → Handles data logic.
+  - `models/` → Data structures (`TaskModel`, `QuoteModel`).
+  - `services/` → External services like Dio API calls & local DB (Hive/SQLite).
+  - `repositories/` → Abstraction layer between services & providers.
+- **providers/** → State management layer using Provider/ChangeNotifier.
+  - `task_provider.dart` → Manages tasks (CRUD, completion, persistence).
+  - `quote_provider.dart` → Manages motivational quote fetching.
+- **ui/** → Presentation layer (all the visuals).
+  - `screens/` → Different pages of the app (Home, Add Task, Task Details, Settings).
+  - `widgets/` → Reusable UI components (Task tile, buttons, etc.).
+  - `dialogs/` → Popups for quick add/edit actions.
+- **routes/** → Centralized route management (`app_routes.dart`).
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
