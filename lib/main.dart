@@ -4,6 +4,7 @@ import 'package:todoapp/app.dart';
 import 'package:todoapp/provider/splash_provider.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(
     MultiProvider(
       providers: [
