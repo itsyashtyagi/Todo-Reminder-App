@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todoapp/ui/home_screen.dart';
 import 'package:todoapp/ui/login_screen.dart';
 import 'package:todoapp/ui/splash_screen.dart';
 
@@ -13,6 +14,7 @@ class App extends StatelessWidget {
       routes: {
         '/': (context) => const SplashScreen(),
         '/login': (context) => const LoginScreen(),
+        '/home': (context) => const HomeScreen(),
       },
       title: "Todo-App",
     );

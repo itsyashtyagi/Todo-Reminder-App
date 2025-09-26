@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:todoapp/model/login_model.dart';
 import 'package:todoapp/provider/login_provider.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -39,19 +40,21 @@ class LoginScreen extends StatelessWidget {
               _customTextField(
                 title: "Email",
                 hintText: "yashxyz@gmail.com",
-                controller: context.read<LoginProvider>().emailController,
+                controller: context.watch<LoginProvider>().emailController,
                 icon: Icons.email,
               ),
               const SizedBox(height: 20),
               _customTextField(
                 title: "Password",
                 hintText: "*********",
-                controller: context.read<LoginProvider>().passwordController,
+                controller: context.watch<LoginProvider>().passwordController,
                 icon: Icons.password,
               ),
               const SizedBox(height: 50),
               GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  context.read<LoginProvider>().userLoginButton(context);
+                },
                 child: Container(
                   margin: EdgeInsets.symmetric(horizontal: 30),
                   width: double.infinity,
@@ -61,10 +64,12 @@ class LoginScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Center(
-                    child: Text(
-                      "Login",
-                      style: TextStyle(color: Colors.white, fontSize: 20),
-                    ),
+                    child: context.watch<LoginProvider>().isLoading
+                        ? CircularProgressIndicator(color: Colors.white)
+                        : Text(
+                            "Login",
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                          ),
                   ),
                 ),
               ),
