@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:todoapp/app.dart';
 import 'package:todoapp/provider/login_provider.dart';
 import 'package:todoapp/provider/splash_provider.dart';
+import 'package:todoapp/provider/todo_provider.dart';
 import 'package:todoapp/repository/login_repository.dart';
 
 void main() async {
@@ -16,6 +17,7 @@ void main() async {
         ChangeNotifierProvider(
           create: (context) => LoginProvider(LoginRepository()),
         ),
+        ChangeNotifierProvider(create: (context) => TodoProvider()),
       ],
       child: const App(),
     ),
