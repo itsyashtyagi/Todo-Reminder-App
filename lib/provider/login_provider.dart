@@ -43,29 +43,34 @@ class LoginProvider extends ChangeNotifier {
     if (!isLoading && (formkey.currentState?.validate() ?? false)) {
       String email = emailController.text.trim();
       String password = passwordController.text.trim();
+      // final navigator = Navigator.of(context);
       final success = await userLogin(email, password);
       if (success) {
-        Navigator.popAndPushNamed(context, '/home');
+        if (context.mounted) {
+          Navigator.popAndPushNamed(context, '/home');
+        }
       } else {
-        showDialog(
-          context: context,
-          builder: (context) => Dialog(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text("Login Failed please make sure to connect Internet."),
-                const SizedBox(height: 10),
-                Text(loginModel?.message ?? ""),
-                TextButton(
-                  onPressed: () => Navigator.pop(context),
-                  child: Text("Close"),
-                ),
-              ],
+        if (context.mounted) {
+          showDialog(
+            context: context,
+            builder: (ctx) => Dialog(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text("Login Failed please make sure to connect Internet."),
+                  const SizedBox(height: 10),
+                  Text(loginModel?.message ?? ""),
+                  TextButton(
+                    onPressed: () => Navigator.pop(context),
+                    child: Text("Close"),
+                  ),
+                ],
+              ),
             ),
-          ),
-        );
+          );
+        }
       }
     }
   }
